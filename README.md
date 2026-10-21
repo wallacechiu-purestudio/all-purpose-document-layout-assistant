@@ -1,8 +1,8 @@
 # 全能文稿排版助手｜Academic & Teaching Edition
 
-> 繁體中文 AI Agent Skill：將學術研究與大學教學內容整理成清楚、可信、可檢查、可維護的履歷／CV、研究報告、簡報、講義與 HTML 文稿，並支援附完整原始碼的簡報專案。
+> 繁體中文 AI Agent Skill：將學術研究與大學教學內容整理成清楚、可信、可檢查、可維護的履歷／CV、研究報告、簡報、講義與 HTML 文稿；並直接整合 Guizang PPT 的兩套完整網頁簡報模板、版型資料庫、主題色、元件與演講者模式。
 
-**v1.1.0 · AGPL-3.0-only · Codex / Claude Code / Google AI Studio**
+**v1.2.0 · AGPL-3.0-only · Codex / Claude Code / Google AI Studio**
 
 ## 30 秒開始
 
@@ -37,6 +37,21 @@ npx skills add https://github.com/wallacechiu-purestudio/all-purpose-document-la
 - **Claude Code**：`~/.claude/skills/all-purpose-document-layout-assistant/`
 
 確認 Skill 資料夾根目錄有 `SKILL.md`，再重新載入 Agent。更多細節見 [本地安裝指南](references/agent-install.md)。
+
+## 網頁 PPT 核心資產
+
+本專案不只保留 Guizang PPT 的設計理念，亦已將其可重用的模板、版型與現場演講控制資源納入倉庫：
+
+- `assets/template.html`：Editorial／E-ink 完整模板。
+- `assets/template-swiss.html`：Swiss／Grid 完整模板。
+- `assets/motion.min.js`：本地動效資源。
+- `references/layouts.md`、`references/layouts-swiss.md`：版型資料庫。
+- `references/themes.md`、`references/themes-swiss.md`、`references/components.md`：主題色與元件指南。
+- `references/presenter-mode.md`、`references/checklist.md`、`references/swiss-layout-lock.md`：講者模式與品質規則。
+- `references/guizang-feature-guide.md`：功能導覽、使用流程與驗證方式。
+- `scripts/validate-presenter-mode.mjs`、`scripts/validate-swiss-deck.mjs`、`scripts/check-presenter-runtime-sync.mjs`：簡報結構與模板檢查工具。
+
+使用前請依簡報類型選一套模板，並閱讀相對應的版型文件；兩套模板不可混用。詳細使用方式見 [Guizang 功能整合指南](references/guizang-feature-guide.md)。
 
 ## 核心工作流程
 
