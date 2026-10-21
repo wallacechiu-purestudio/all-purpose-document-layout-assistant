@@ -3,7 +3,7 @@ name: all-purpose-document-layout-assistant
 description: 將學術研究與大學教學內容整理成可信、清楚、可檢查、可維護的履歷／CV、研究報告、簡報、講義與 HTML 文稿；支援附完整原始碼的網頁簡報專案、資訊視覺化與 CRAP 檢核。
 license: AGPL-3.0-only
 metadata:
-  version: 1.3.0
+  version: 2.0.0
   language: zh-TW
 ---
 
@@ -152,6 +152,14 @@ metadata:
 
 ### 必要驗收
 逐項確認四個模式都存在且真的能切換；16:9 投影片比例、頁碼、上一頁／下一頁和鍵盤控制可用；CRAP 面板可開啟且不虛報完成；列印按鈕有動作；單檔 HTML 可下載並保留功能；窄螢幕不遮擋內容。必須區分程式碼結構檢查與真實瀏覽器驗收。
+
+### v2.0.0 必備：多樣簡報樣板與即時配色選擇
+
+- 16:9 簡報工作台必須提供可操作的樣板選擇器（Swiss Grid、Editorial、E-ink 極簡、Academic 經典、Workshop 活力五種）及獨立配色選擇器（Ink & Paper、Swiss Blue、Forest、Burgundy、Ocean Teal、Warm Neutral 六種）。
+- 點選後立即套用至全部投影片，提供 aria-pressed／等效選取狀態、鍵盤焦點與手機響應式介面。
+- 樣板之間須有實質版面差異；配色須維持足夠對比。樣板和配色可自由組合。
+- 僅允許改變視覺呈現；不得因換樣板或配色而更動內容、數據、來源、引文或頁序。
+- 匯出的單檔 HTML 必須保留選擇器及其 CSS／JavaScript。交付前逐一測試所有樣板與配色；未測試不得聲稱通過。
 
 ## 9. 上游 Guizang PPT 模板與互動機制：必須實際使用
 
