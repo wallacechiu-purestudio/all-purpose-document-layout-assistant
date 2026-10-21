@@ -4,56 +4,73 @@
 
 **v0.3.0 · AGPL-3.0-only · Codex / Claude Code / Google AI Studio**
 
-## 快速使用
+## 30 秒開始
 
-### Codex、Claude Code 與其他支援的 AI Agent
+### 安裝至 Codex／Claude Code
 
-在已安裝 Node.js/npm 的終端機執行：
+先確認本機已安裝 Node.js/npm，再在終端機執行：
 
-    npx skills add https://github.com/wallacechiu-purestudio/all-purpose-document-layout-assistant --skill all-purpose-document-layout-assistant --agent codex claude-code --global --copy
+```bash
+npx skills add https://github.com/wallacechiu-purestudio/all-purpose-document-layout-assistant --skill all-purpose-document-layout-assistant --agent codex claude-code --global --copy
+```
 
-更多方式請參考 [本地安裝指南](references/agent-install.md)。
+若 CLI 參數有變，請依安裝工具當下的提示選擇目標 Agent。手動安裝方式見 [references/agent-install.md](references/agent-install.md)。
 
 ### Google AI Studio
 
-開啟 [AI Studio 指令檔](AI-STUDIO-INSTRUCTIONS.md)，複製全文到可接受自訂指令的欄位，再在 New App／提示欄描述本次任務與提供的素材。也可以從 GitHub Pages 首頁一鍵複製。
+1. 開啟 [AI-STUDIO-INSTRUCTIONS.md](AI-STUDIO-INSTRUCTIONS.md)。
+2. 將全文複製至 AI Studio 可接受自訂指令的欄位。
+3. 再在 New App／主要提示欄描述單次任務，並提供實際資料。
+4. 若介面沒有獨立自訂指令欄，將規範與當次任務一起貼入提示。
 
-### 下載
+首頁提供一鍵複製入口。它只會複製文字，不會自動更改 AI Studio 設定或上傳資料。
 
-- [Skill 專用 ZIP](dist/all-purpose-document-layout-assistant-skill-v0.3.0.zip)
-- 完整原始碼：GitHub 頁面上點 **Code → Download ZIP**。
+### 下載至本地電腦
 
-## 設計方法
+點 GitHub 頁面的 **Code → Download ZIP**，或直接下載：
 
-1. 先確認目的、受眾、來源素材、輸出形式與限制。
+[下載完整專案 ZIP](https://github.com/wallacechiu-purestudio/all-purpose-document-layout-assistant/archive/refs/heads/main.zip)
+
+解壓縮後，將 `SKILL.md`、`references/` 及需要的 `assets/` 放進 Skill 資料夾。常見全域位置：
+
+- **Codex**：`~/.codex/skills/all-purpose-document-layout-assistant/`
+- **Claude Code**：`~/.claude/skills/all-purpose-document-layout-assistant/`
+
+確認 Skill 資料夾根目錄有 `SKILL.md`，再重新載入 Agent。更多細節見 [本地安裝指南](references/agent-install.md)。
+
+## 核心工作流程
+
+1. 讀取真實素材，確認目的、受眾、使用場景與限制。
 2. 規劃資訊架構與每頁／每節的主要訊息。
-3. 依任務選擇一致的視覺系統：A 編輯雜誌式、B 瑞士網格式、C 教學工作坊式。
-4. 依 CRAP 四原則（Contrast、Repetition、Alignment、Proximity）檢查兩輪。
-5. 保留研究證據、原始數據、引文與可追溯來源；不捏造資料。
-6. 交付時清楚說明驗證範圍及尚未實際驗證的項目。
+3. 依內容選擇 A 編輯雜誌式、B 瑞士網格式或 C 教學工作坊式視覺系統。
+4. 依 CRAP 四原則（Contrast、Repetition、Alignment、Proximity）進行兩輪檢核。
+5. 保留研究證據、原始數據、引文與可追溯來源，不捏造資料。
+6. 交付成品，說明檢核結果、實際測試範圍與未驗證事項。
 
 ## 專案檔案
 
-- SKILL.md：AI Agent 核心規範
-- AI-STUDIO-INSTRUCTIONS.md：Google AI Studio 專用指令
-- references/crap-checklist.md：CRAP 兩輪驗收清單
-- references/layout-patterns.md：三套視覺系統與版型模式
-- assets/academic-deck-template.html：HTML 網頁簡報模板
-- NOTICE.md、LICENSE：來源聲明與授權
+- [SKILL.md](SKILL.md)：AI Agent 核心規範
+- [AI-STUDIO-INSTRUCTIONS.md](AI-STUDIO-INSTRUCTIONS.md)：Google AI Studio 專用指令
+- [references/crap-checklist.md](references/crap-checklist.md)：CRAP 兩輪驗收清單
+- [references/layout-patterns.md](references/layout-patterns.md)：三套視覺系統與版型模式
+- [references/agent-install.md](references/agent-install.md)：本地安裝指南
+- [index.html](index.html)：一鍵複製與下載入口
+- [NOTICE.md](NOTICE.md) 與 [LICENSE](LICENSE)：來源聲明與授權
 
-## GitHub Pages
+## 啟用 GitHub Pages
 
-至 Settings → Pages → Build and deployment，選擇 Deploy from a branch，分支 main、資料夾 /(root)，儲存後等候部署完成。
+到 **Settings → Pages → Build and deployment**，將 Source 設為 **Deploy from a branch**，Branch 選 `main`，資料夾選 `/(root)`，按 Save。等候 GitHub Pages 完成部署後，就能使用首頁的一鍵複製功能。
+
+GitHub 官方文件：<https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site>
 
 ## 來源與授權
 
-本專案參考並改裝自 [op7418/guizang-ppt-skill](https://github.com/op7418/guizang-ppt-skill)，保留來源聲明並以 AGPL-3.0-only 發布。本專案為衍生改作，非原作者官方版本。詳見 [NOTICE.md](NOTICE.md)。
+本專案參考並改作自 [op7418/guizang-ppt-skill](https://github.com/op7418/guizang-ppt-skill)。本專案以 AGPL-3.0-only 發布，完整條文見 [LICENSE](LICENSE)，改作範圍見 [NOTICE.md](NOTICE.md)。此專案非原作者官方版本。
 
-## 本地驗證
+## 本地檢查
 
-在專案根目錄執行：
+```bash
+python3 scripts/validate_project.py
+```
 
-    python3 scripts/build_skill_zip.py
-    python3 scripts/validate_project.py
-
-這些腳本只能檢查檔案結構、連結與基本格式，不能代替瀏覽器視覺驗收或對 AI 生成內容的品質測試。
+程式檢查不等於瀏覽器視覺驗收；尚未實際測試的項目應如實揭露。
