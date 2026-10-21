@@ -3,7 +3,7 @@ name: all-purpose-document-layout-assistant
 description: 將學術研究與大學教學內容整理成可信、清楚、可檢查、可維護的履歷／CV、研究報告、簡報、講義與 HTML 文稿；支援附完整原始碼的網頁簡報專案、資訊視覺化與 CRAP 檢核。
 license: AGPL-3.0-only
 metadata:
-  version: 1.1.0
+  version: 1.2.0
   language: zh-TW
 ---
 
@@ -128,7 +128,37 @@ metadata:
 - 若不能實際預覽，明確標註「已產生程式碼，尚未實際瀏覽器驗收」，不可聲稱完成視覺驗收。
 - 只有工具確實能產生並檢查時，才交付 DOCX、PPTX 或 PDF；不可把 HTML 冒稱為上述格式。
 
-## 9. 交付前品質檢查
+## 9. 上游 Guizang PPT 模板與互動機制：必須實際使用
+
+當使用者要求製作高完成度網頁 PPT、演講簡報、簡報原始碼或可重複使用的簡報專案時，不可只沿用抽象設計理念或只使用精簡示範模板。應優先使用本倉庫已納入的上游資源：
+
+- `assets/template.html`：Editorial／E-ink 完整模板。
+- `assets/template-swiss.html`：Swiss／Grid 完整模板。
+- `assets/motion.min.js`：上游模板的本地動效資源。
+- `references/layouts.md`、`references/layouts-swiss.md`：版型資料庫與選版規則。
+- `references/components.md`：可重用元件。
+- `references/themes.md`、`references/themes-swiss.md`：主題色預設。
+- `references/presenter-mode.md`：演講者模式、講稿備註、穩定頁面 ID、計時與觀眾屏同步規則。
+- `references/checklist.md`、`references/swiss-layout-lock.md`：品質檢查與 Swiss 登記版型約束。
+- `references/swiss-map-component.md`：需要地理資訊時使用的地圖元件。
+- `references/image-prompts.md`、`references/screenshot-framing.md`：配圖及保真截圖處理規則。
+- `references/guizang-feature-guide.md`：本專案已整合功能與使用方式總覽。
+
+### 強制工作流程
+
+1. 先依內容選擇 A `assets/template.html` 或 B `assets/template-swiss.html`，不要把兩套模板的 class、網格或主題規則混用。
+2. 先閱讀對應的版型文件，規劃每頁用途、版型、主題明暗節奏、圖片槽位與來源，再開始寫 slide。
+3. 所有使用的 class 必須在所選模板中有定義。不要發明不存在的 class；需要擴充時先在模板 CSS 中定義共用樣式。
+4. 使用 Swiss 模板時，遵守 `references/swiss-layout-lock.md` 與 `references/layouts-swiss.md` 的登記版型限制；除非使用者明確要求實驗版型，不要自行發明未登記的正文結構。
+5. 若為正式演講，使用穩定且唯一的 `data-slide-id`，依 `references/presenter-mode.md` 生成與頁面對應的 `SPEAKER_NOTES`；備註應補充背景、口述重點、轉場和時間，不可逐字複製投影片，也不可捏造內容。
+6. 只有在使用者需要時才啟用計時、自動翻頁、雷射筆／圈選、觀眾畫面同步等功能；使用前確認模板確實提供該功能，交付前依實際環境測試。不得把模板內存在的功能宣稱為已測試，除非真的測試過。
+7. 產出前執行對應的結構檢查：`node scripts/validate-presenter-mode.mjs <deck.html>`；Swiss 模板另執行 `node scripts/validate-swiss-deck.mjs <deck.html>`；可執行時再跑 `node scripts/check-presenter-runtime-sync.mjs`。
+8. 必須在瀏覽器實際開啟檢查視覺效果、文字溢位、頁面切換、備註、圖片載入與響應式狀態。若沒有瀏覽器測試能力，明確標示未驗收，不可用程式碼檢查冒充視覺驗收。
+9. 對外提供完整專案時，包含選用的模板、生成後的簡報 HTML、必要的本地資源、README／使用說明、來源及授權資訊。不可只交付空模板或零散 slide 片段卻宣稱已完成完整簡報。
+
+此專案仍保留學術內容保真、來源追溯、繁體中文、教學設計、履歷／報告完整交付與 CRAP 雙輪檢查；上游 PPT 機制是可實際重用的基礎，不取代這些新增規範。
+
+## 10. 交付前品質檢查
 
 - 內容、研究證據、履歷事實與來源是否忠實？
 - 章節／頁面資訊架構是否完整且順序合理？
@@ -139,14 +169,19 @@ metadata:
 - 是否檢查文字溢位、過密頁面、錯誤分組、資料標籤與列印／響應式版面？
 - 是否如實區分已實際測試、僅做結構檢查與尚未驗證的項目？
 
-## 10. 參考清單與輔助檔案
+## 11. 參考清單與輔助檔案
 
 依任務使用本專案實際存在的輔助檔案：
+- references/layouts.md、references/layouts-swiss.md：上游完整版型資料庫。
+- references/components.md、references/themes.md、references/themes-swiss.md：元件與主題色預設。
+- references/presenter-mode.md、references/checklist.md、references/swiss-layout-lock.md：演講者模式與品質檢查。
+- references/guizang-feature-guide.md：已整合的上游 PPT 機制使用指南。
 - references/crap-checklist.md：CRAP 兩輪檢核。
 - references/layout-patterns.md：三套視覺系統與版型模式。
 - references/deliverable-checklist.md：履歷、研究報告、附完整原始碼簡報的交付檢核。
 - references/agent-install.md：本地安裝指南。
-- assets/academic-deck-template.html 與 assets/academic-deck.css：現有網頁簡報模板與樣式。
+- assets/template.html、assets/template-swiss.html、assets/motion.min.js：上游完整網頁簡報模板與動效資源。
+- assets/academic-deck-template.html 與 assets/academic-deck.css：本衍生版精簡示範模板。
 - scripts/validate_project.py：基本專案結構與連結檢查。
 
 原始來源專案請見 https://github.com/op7418/guizang-ppt-skill。只有實際讀取過的檔案才能聲稱已閱讀；沒有實際執行的檢查不能聲稱已通過。
