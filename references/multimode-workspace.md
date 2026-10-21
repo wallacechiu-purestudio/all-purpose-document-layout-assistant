@@ -52,7 +52,10 @@ Google AI Studio 不會因為 System Instructions 提到 GitHub 路徑，就自�
 - [ ] 手機／窄視窗下工具列及內容可用。
 - [ ] 已區分程式碼檢查與真實瀏覽器驗收；未測項目清楚標示。
 
-## v2.0.0：樣板與配色選擇器（必要功能）
+
+**重要界線：** 本文件配套的 `assets/multimode-document-studio-template.html` 是多模式介面與簡化 16:9 投影片的功能示範，不是上游 Guizang 的完整 deck engine，也不包含上游完整的 WebGL 背景、登記版型庫和完整演講者控制。五種按鈕若只對這個示範 HTML 套用 CSS，不能宣稱已發揮上游模板的完整效能。要製作正式網頁 PPT，請依 `references/template-integration-playbook.md` 直接以 `assets/template.html` 或 `assets/template-swiss.html` 為底，載入對應版型資料庫。
+
+## v2.1.0：樣板與配色選擇器與上游模板界線（必要功能）
 
 16:9 學術簡報模式必須在工作台中呈現可操作的樣板與配色選擇器。最低規格：
 
