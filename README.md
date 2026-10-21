@@ -97,3 +97,7 @@ python3 scripts/validate_project.py
 ```
 
 程式檢查不等於瀏覽器視覺驗收；尚未實際測試的項目應如實揭露。
+
+## v2.1.0：真正使用上游模板的工作流程
+
+新增 [Guizang 模板效能整合手冊](references/template-integration-playbook.md)，清楚區分上游的兩套完整 HTML 模板與本衍生版的五種產品風格預設，並說明 Google AI Studio 不會僅憑 GitHub 路徑自動載入檔案。若要保留上游版型、WebGL 背景、翻頁與演講者模式，必須讓執行環境實際讀取完整 HTML 與配套 layouts/themes/components；只貼提示詞不足以保證。
