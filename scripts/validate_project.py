@@ -11,13 +11,14 @@ required = [
     "references/crap-checklist.md",
     "references/layout-patterns.md", "references/deliverable-checklist.md",
     "references/agent-install.md",
-    "references/guizang-feature-guide.md",
+    "references/guizang-feature-guide.md", "references/multimode-workspace.md",
     "references/layouts.md", "references/layouts-swiss.md",
     "references/components.md", "references/themes.md", "references/themes-swiss.md",
     "references/presenter-mode.md", "references/checklist.md",
     "references/swiss-layout-lock.md", "references/swiss-map-component.md",
     "references/image-prompts.md", "references/screenshot-framing.md",
     "assets/template.html", "assets/template-swiss.html", "assets/motion.min.js",
+    "assets/multimode-document-studio-template.html",
     "scripts/validate-presenter-mode.mjs",
     "scripts/check-presenter-runtime-sync.mjs",
     "scripts/validate-swiss-deck.mjs",
@@ -50,7 +51,7 @@ for label, content in (("AI Studio instructions", instructions), ("deliverable c
         if token not in content:
             print(f"{label} missing required feature: {token}")
             sys.exit(1)
-if "v1.2.0" not in instructions or "v1.2.0" not in html or "v1.2.0" not in (ROOT / "README.md").read_text(encoding="utf-8") or "version: 1.2.0" not in skill:
+if "v1.3.0" not in instructions or "v1.3.0" not in html or "v1.3.0" not in (ROOT / "README.md").read_text(encoding="utf-8") or "version: 1.3.0" not in skill:
     print("Version consistency check failed")
     sys.exit(1)
 for template in ("assets/template.html", "assets/template-swiss.html"):
@@ -59,9 +60,19 @@ for template in ("assets/template.html", "assets/template-swiss.html"):
         print(f"Template feature check failed: {template}")
         sys.exit(1)
 guide = (ROOT / "references/guizang-feature-guide.md").read_text(encoding="utf-8")
+mode_spec = (ROOT / "references/multimode-workspace.md").read_text(encoding="utf-8")
+mode_template = (ROOT / "assets/multimode-document-studio-template.html").read_text(encoding="utf-8")
+for token in ("16:9 學術簡報模式", "CRAP 檢核報告", "列印／PDF", "下載單檔 HTML"):
+    if token not in mode_spec or token not in instructions or token not in mode_template:
+        print(f"Multimode workspace feature missing: {token}")
+        sys.exit(1)
+for token in ("data-mode-button", "data-mode-view", "window.print()", "Blob(", "aspect-ratio:16/9"):
+    if token not in mode_template:
+        print(f"Multimode HTML template missing behaviour: {token}")
+        sys.exit(1)
 for token in ("template.html", "template-swiss.html", "presenter-mode.md", "layouts-swiss.md"):
     if token not in guide:
         print(f"Guizang feature guide missing reference: {token}")
         sys.exit(1)
-print("PASS: required files, Skill front matter, CRAP terms, complete deliverables, Guizang templates and references, version consistency, and local links.")
+print("PASS: required files, Skill front matter, CRAP terms, complete deliverables, Guizang templates and references, multimode workspace features, version consistency, and local links.")
 print("NOTE: this script does not test browser rendering, clipboard permissions, or Pages deployment.")
