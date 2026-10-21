@@ -82,3 +82,7 @@
 | 需要演講備註、排練或觀眾畫面同步 | 任一模板，並遵循 `references/presenter-mode.md` |
 
 此專案仍保留學術內容保真、來源追溯、繁體中文、CRAP 雙輪檢查與完整原始碼交付要求；這些是本衍生版在上游網頁 PPT 機制之上的擴充。
+
+## v2.1.0：讓上游資源真正發揮效能
+
+引用檔案路徑不等於模型已讀取檔案。AI Studio 必須實際接收完整模板及相應 layout/theme 資料；能讀取工作目錄的 Agent 則應直接複製完整模板並填入已規劃的版型。不要用簡化的 `multimode-document-studio-template.html` 取代上游完整 deck，也不要把五種衍生版風格選項誤稱為上游原生五套模板。詳見 [模板效能整合手冊](template-integration-playbook.md)。
