@@ -2,7 +2,7 @@
 
 > 繁體中文 AI Agent Skill：將學術研究與大學教學內容整理成清楚、可信、可檢查、可維護的履歷／CV、研究報告、簡報、講義與 HTML 文稿；並直接整合 Guizang PPT 的兩套完整網頁簡報模板、版型資料庫、主題色、元件與演講者模式。
 
-**v1.2.0 · AGPL-3.0-only · Codex / Claude Code / Google AI Studio**
+**v1.3.0 · AGPL-3.0-only · Codex / Claude Code / Google AI Studio**
 
 ## 30 秒開始
 
@@ -38,6 +38,10 @@ npx skills add https://github.com/wallacechiu-purestudio/all-purpose-document-la
 
 確認 Skill 資料夾根目錄有 `SKILL.md`，再重新載入 Agent。更多細節見 [本地安裝指南](references/agent-install.md)。
 
+## 多模式工作介面與 16:9 學術簡報
+
+新版新增四種可切換模式（瑞士國際網格、雜誌電子墨水、教學與工作坊、16:9 學術簡報）以及 CRAP 檢核、列印／PDF、下載單檔 HTML 規格。範例見 [多模式 HTML 工作介面](assets/multimode-document-studio-template.html)，完整行為規格見 [multimode-workspace.md](references/multimode-workspace.md)。這些是本衍生版新增的整合功能；AI Studio 不會僅憑 GitHub 路徑自動載入倉庫檔案，因此 System Instructions 內也直接包含必要規格。
+
 ## 網頁 PPT 核心資產
 
 本專案不只保留 Guizang PPT 的設計理念，亦已將其可重用的模板、版型與現場演講控制資源納入倉庫：
@@ -67,6 +71,7 @@ npx skills add https://github.com/wallacechiu-purestudio/all-purpose-document-la
 
 - [SKILL.md](SKILL.md)：AI Agent 核心規範
 - [AI-STUDIO-INSTRUCTIONS.md](AI-STUDIO-INSTRUCTIONS.md)：Google AI Studio 專用指令
+- [多模式工作介面規格](references/multimode-workspace.md) 與 [可執行 HTML 範本](assets/multimode-document-studio-template.html)
 - [references/crap-checklist.md](references/crap-checklist.md)：CRAP 兩輪驗收清單
 - [references/layout-patterns.md](references/layout-patterns.md)：三套視覺系統與版型模式
 - [references/deliverable-checklist.md](references/deliverable-checklist.md)：履歷、研究報告與附完整原始碼簡報的交付檢核
