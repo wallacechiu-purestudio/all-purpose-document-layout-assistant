@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-Hant" data-initial-mode="swiss">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="全能文稿排版助手多模式文稿工作介面範本">
+<title>多模式文稿工作介面｜全能文稿排版助手</title>
+<style>
+:root{color-scheme:light;--paper:#f4f4f2;--ink:#151515;--muted:#626262;--line:#d8d8d5;--blue:#1877f2;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);line-height:1.55}button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid #1677ff;outline-offset:3px}
+.toolbar{position:sticky;z-index:20;top:0;display:flex;align-items:center;gap:10px;padding:12px clamp(12px,2vw,28px);background:#fffffff2;border-bottom:1px solid #ddd;flex-wrap:wrap}.brand{font-weight:800;white-space:nowrap;margin-right:auto}.mode-group,.action-group{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.toolbar button{border:1px solid transparent;background:#f1f1f1;color:#383838;padding:9px 12px;border-radius:9px;font-size:13px;font-weight:650}.toolbar button[aria-pressed="true"]{background:#141414;color:white;border-color:#141414;box-shadow:0 0 0 2px #1677ff}.toolbar .action{background:#f6f6f6;border-color:#e4e4e4}.toolbar .dark{background:#171717;color:white}
+.workspace{max-width:1440px;margin:24px auto;padding:0 clamp(12px,2vw,28px) 50px}.mode-view[hidden]{display:none!important}.paper{background:white;border:1px solid #e1e1e1;border-radius:16px;box-shadow:0 16px 42px #0000000d;overflow:hidden}.meta-row{display:flex;justify-content:space-between;gap:20px;color:#727272;font:12px ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;padding:24px 28px;border-bottom:1px solid #e5e5e5}.body-pad{padding:clamp(24px,4vw,64px)}.kicker{font:12px ui-monospace,monospace;letter-spacing:.14em;color:var(--blue);text-transform:uppercase}.main-title{font-size:clamp(32px,5vw,68px);letter-spacing:-.055em;line-height:1.08;margin:16px 0}.sub-title{font-size:clamp(17px,2vw,24px);color:#6a6a6a;max-width:760px}.intro{font-size:18px;max-width:820px;color:#444}.content-section{padding-top:28px;margin-top:32px;border-top:1px solid var(--line)}.content-section h2{font-size:clamp(20px,2.4vw,30px);margin:0 0 14px}.content-section ul{padding-left:1.2em;margin-bottom:0}.content-section li{padding:5px 0}
+.swiss-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(230px,.85fr);gap:32px;align-items:start}.statbox{background:#f2f5f8;padding:22px;border-left:4px solid #1877f2}.statbox h3{margin-top:0}.editorial{font-family:Georgia,"Noto Serif TC",serif}.editorial .main-title{font-weight:500;letter-spacing:-.035em}.editorial .intro{font-size:20px;line-height:1.8}.editorial .content-section{border-top:2px solid #222;margin-top:42px;padding-top:25px}.editorial .content-section h2{font-weight:500}.workshop-banner{padding:24px;background:#172d2a;color:white;border-radius:12px}.workshop-banner .kicker{color:#91e6c9}.workshop-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.workshop-steps .content-section{border:1px solid var(--line);border-radius:10px;padding:20px;margin:0;background:white}
+.slide-controls{display:flex;justify-content:center;align-items:center;gap:12px;margin:14px 0}.slide-controls button,.overview button{background:white;border:1px solid #ccc;border-radius:8px;padding:8px 12px}.slide-count{font:13px ui-monospace,monospace;color:#555;min-width:75px;text-align:center}.slide-stage{max-width:1120px;margin:0 auto}.slide{aspect-ratio:16/9;width:100%;min-height:320px;max-height:calc(100vh - 210px);overflow:auto;background:#090909;color:#fff;border-radius:12px;padding:clamp(24px,5vw,72px);display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 18px 54px #0002}.slide[hidden]{display:none}.slide .kicker{color:#65b8ff}.slide h1{font-size:clamp(30px,5vw,70px);line-height:1.08;letter-spacing:-.04em;margin:16px 0}.slide h2{font-size:clamp(24px,3.4vw,46px);line-height:1.15}.slide p,.slide li{font-size:clamp(15px,1.4vw,20px);color:#dedede}.slide-foot{display:flex;justify-content:space-between;border-top:1px solid #444;padding-top:12px;color:#aaa;font:12px ui-monospace,monospace}.overview{display:none;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:18px}.overview.open{display:grid}.overview button{text-align:left;min-height:110px}.overview strong{display:block;margin-bottom:8px}.hint{text-align:center;color:#777;font-size:12px;margin:10px 0}
+.dialog{border:1px solid #ddd;border-radius:16px;padding:0;width:min(760px,calc(100vw - 24px));max-height:85vh;overflow:auto;box-shadow:0 20px 80px #0004}.dialog::backdrop{background:#0007;backdrop-filter:blur(3px)}.dialog-head{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid #ddd}.dialog-head h2{margin:0}.dialog-head button{border:1px solid #ddd;border-radius:8px;background:white;padding:7px 10px}.dialog-body{padding:20px 22px}.dialog-body p{color:#555}.check-group{padding:16px 0;border-bottom:1px solid #eee}.check-group h3{margin:0 0 8px}.check-item{display:flex;gap:10px;align-items:flex-start;padding:7px 0}.check-item input{margin-top:5px}.check-status{font-size:12px;color:#666;margin-top:6px}.footnote{color:#777;font-size:12px;margin-top:18px}.footer{max-width:1440px;margin:20px auto;padding:0 clamp(12px,2vw,28px);font-size:12px;color:#777}
+@media(max-width:850px){.brand{width:100%;margin-bottom:2px}.toolbar{position:static}.swiss-grid{grid-template-columns:1fr}.workshop-steps{grid-template-columns:1fr}.slide{max-height:none;min-height:280px}.workspace{margin-top:14px}}
+@media print{body{background:#fff}.toolbar,.slide-controls,.hint,.footer,.dialog,.overview{display:none!important}.workspace{padding:0;margin:0;max-width:none}.paper{border:0;border-radius:0;box-shadow:none}.mode-view[hidden]{display:none!important}.slide-stage{max-width:none}.slide{display:flex!important;width:100%;height:56.25vw;max-height:none;aspect-ratio:16/9;border-radius:0;page-break-after:always;break-after:page;print-color-adjust:exact;-webkit-print-color-adjust:exact}.slide:last-child{break-after:auto}.body-pad{padding:20mm}.meta-row{padding:10mm}.content-section{break-inside:avoid}.content-section li{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="toolbar" aria-label="文稿模式與輸出工具列">
+  <div class="brand">AP·DA / 多模式文稿工作台</div>
+  <div class="mode-group" role="group" aria-label="選擇呈現模式">
+    <button type="button" data-mode-button="swiss" aria-pressed="true">▦ 瑞士國際網格（風格 B）</button>
+    <button type="button" data-mode-button="editorial" aria-pressed="false">▣ 雜誌電子墨水（風格 A）</button>
+    <button type="button" data-mode-button="workshop" aria-pressed="false">♧ 教學與工作坊（風格 C）</button>
+    <button type="button" data-mode-button="slides" aria-pressed="false">▣ 16:9 學術簡報模式</button>
+  </div>
+  <div class="action-group" role="group" aria-label="檢核與輸出">
+    <button class="action" type="button" id="crap-open">✓ CRAP 檢核報告</button>
+    <button class="action" type="button" id="print-page">▤ 列印／PDF</button>
+    <button class="dark" type="button" id="download-html">↓ 下載單檔 HTML</button>
+  </div>
+</header>
+<main class="workspace">
+  <section id="view-swiss" class="mode-view" data-mode-view="swiss" aria-label="瑞士國際網格模式">
+    <div class="paper"><div class="meta-row"><span>DOCUMENT / SWISS GRID</span><span>MODE B</span></div><div class="body-pad">
+      <div class="swiss-grid"><div><p class="kicker">Research · Teaching · Editorial</p><h1 class="main-title" data-title>請替換為文件標題</h1><p class="sub-title" data-subtitle>研究／教學主題、副標題或用途</p><p class="intro" data-intro>請依已提供或已查證的素材撰寫，不要捏造資格、數據或成果。</p></div><aside class="statbox"><h3 data-author>姓名／作者</h3><p data-role>職稱／單位</p><p>本版為可重用的示範範本。請以來源資料替換所有示例內容，並完成事實與版面檢核。</p></aside></div><div data-sections></div>
+    </div></div>
+  </section>
+  <section id="view-editorial" class="mode-view editorial" data-mode-view="editorial" aria-label="雜誌電子墨水模式" hidden>
+    <div class="paper"><div class="meta-row"><span>FIELD NOTES / EDITORIAL</span><span>MODE A</span></div><div class="body-pad">
+      <p class="kicker">A considered document</p><h1 class="main-title" data-title>請替換為文件標題</h1><p class="sub-title" data-subtitle>研究／教學主題、副標題或用途</p><p class="intro" data-intro>請依已提供或已查證的素材撰寫，不要捏造資格、數據或成果。</p><p data-author></p><p data-role></p><div data-sections></div>
+    </div></div>
+  </section>
+  <section id="view-workshop" class="mode-view" data-mode-view="workshop" aria-label="教學與工作坊模式" hidden>
+    <div class="paper"><div class="meta-row"><span>LEARNING / WORKSHOP</span><span>MODE C</span></div><div class="body-pad">
+      <div class="workshop-banner"><p class="kicker">Workshop / Learning Design</p><h1 class="main-title" data-title>請替換為文件標題</h1><p class="sub-title" data-subtitle>研究／教學主題、副標題或用途</p><p data-intro>請依已提供或已查證的素材撰寫，不要捏造資格、數據或成果。</p></div><p><strong data-author>姓名／作者</strong> · <span data-role>職稱／單位</span></p><div class="workshop-steps" data-sections></div>
+    </div></div>
+  </section>
+  <section id="view-slides" class="mode-view" data-mode-view="slides" aria-label="16比9學術簡報模式" hidden>
+    <div class="slide-stage" id="slide-stage" aria-live="polite"></div>
+    <div class="slide-controls"><button type="button" id="slide-prev" aria-label="上一頁">← 上一頁</button><span id="slide-count" class="slide-count">01 / 05</span><button type="button" id="slide-next" aria-label="下一頁">下一頁 →</button><button type="button" id="slide-overview-toggle" aria-expanded="false">總覽（Esc）</button></div>
+    <p class="hint">鍵盤 ← → 翻頁；Esc 切換頁面總覽。列印時每張投影片分頁。</p><div id="slide-overview" class="overview" aria-label="投影片總覽"></div>
+  </section>
+</main>
+<footer class="footer">本範本為功能示範。範本文字不是個人事實或已驗證研究；正式使用前請替換素材、查核內容、檢查版面並記錄驗收狀態。</footer>
+<dialog id="crap-dialog" class="dialog" aria-labelledby="crap-title">
+  <div class="dialog-head"><h2 id="crap-title">CRAP 檢核報告</h2><button type="button" id="crap-close" aria-label="關閉檢核報告">關閉 ✕</button></div>
+  <div class="dialog-body"><p>請實際檢查目前成品後再勾選。此面板提供檢核記錄，不會自動驗證內容、來源或瀏覽器渲染；未勾選項目維持「尚未檢查」。</p><div id="crap-checks"></div><p id="crap-summary" role="status">完成 0 項；其餘尚未檢查。</p></div>
+</dialog>
+<script>
+const DOC = {
+  title:"請替換為文件標題", subtitle:"研究／教學主題、副標題或用途", author:"姓名／作者", role:"職稱／單位",
+  intro:"請依已提供或已查證的素材撰寫，不要捏造資格、數據或成果。",
+  sections:[
+    {title:"核心摘要",label:"01 / SUMMARY",items:["主要主張或摘要：請使用已提供的資料。","關鍵內容與證據：待補來源或原始材料。","重要限制：尚未確認的資訊需明確標示。"]},
+    {title:"經歷與證據",label:"02 / EXPERIENCE",items:["經歷／事件：日期及角色需以來源確認。","研究、教學或專案成果：請補上可驗證的證據。"]},
+    {title:"成果與貢獻",label:"03 / OUTCOMES",items:["代表成果：提供正式出版、作品或專案連結。","貢獻說明：區分事實、詮釋與待驗證推論。"]},
+    {title:"下一步與聯絡",label:"04 / NEXT STEPS",items:["待補資料：列出尚缺的欄位與附件。","聯絡／參考來源：請填入實際可用的資訊。"]}
+  ]
+};
+const esc = value => String(value).replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+function sectionsHTML(layout){
+  return DOC.sections.map(section=>{
+    const items=section.items.map(item=>"<li>"+esc(item)+"</li>").join("");
+    if(layout==="workshop")return '<article class="content-section"><p class="kicker">'+esc(section.label)+'</p><h2>'+esc(section.title)+'</h2><ul>'+items+'</ul><p><strong>操作／檢核：</strong>依實際任務補上步驟、時間、產出與評量。</p></article>';
+    return '<section class="content-section"><p class="kicker">'+esc(section.label)+'</p><h2>'+esc(section.title)+'</h2><ul>'+items+'</ul></section>';
+  }).join("");
+}
+function renderDocument(){
+  document.querySelectorAll("[data-title]").forEach(el=>el.textContent=DOC.title);
+  document.querySelectorAll("[data-subtitle]").forEach(el=>el.textContent=DOC.subtitle);
+  document.querySelectorAll("[data-author]").forEach(el=>el.textContent=DOC.author);
+  document.querySelectorAll("[data-role]").forEach(el=>el.textContent=DOC.role);
+  document.querySelectorAll("[data-intro]").forEach(el=>el.textContent=DOC.intro);
+  document.querySelectorAll("[data-sections]").forEach(el=>el.innerHTML=sectionsHTML(el.closest("[data-mode-view]").dataset.modeView));
+  document.title=DOC.title+"｜多模式文稿工作台";
+}
+let activeMode="swiss",activeSlide=0;
+function makeSlides(){
+  const items=[{label:"COVER / PROFILE",title:DOC.title,body:[DOC.subtitle,DOC.author+" · "+DOC.role,DOC.intro]}].concat(DOC.sections.map(s=>({label:s.label,title:s.title,body:s.items})));
+  const stage=document.getElementById("slide-stage"),overview=document.getElementById("slide-overview");
+  stage.innerHTML=items.map((s,i)=>'<article class="slide" data-slide-index="'+i+'" '+(i===0?"":"hidden")+'><div><p class="kicker">'+esc(s.label)+'</p><h'+(i===0?"1":"2")+'>'+esc(s.title)+'</h'+(i===0?"1":"2")+'>'+s.body.map(line=>"<p>"+esc(line)+"</p>").join("")+'</div><div class="slide-foot"><span>ACADEMIC COMMUNICATION / '+String(i+1).padStart(2,"0")+'</span><span>'+String(i+1).padStart(2,"0")+' / '+String(items.length).padStart(2,"0")+'</span></div></article>').join("");
+  overview.innerHTML=items.map((s,i)=>'<button type="button" data-overview-slide="'+i+'"><strong>'+String(i+1).padStart(2,"0")+' · '+esc(s.title)+'</strong><span>'+esc(s.body[0]||"")+'</span></button>').join("");
+  overview.querySelectorAll("[data-overview-slide]").forEach(btn=>btn.addEventListener("click",()=>{activeSlide=Number(btn.dataset.overviewSlide);updateSlide();toggleOverview(false)}));
+  updateSlide();
+}
+function updateSlide(){
+  const slides=[...document.querySelectorAll("[data-slide-index]")];if(!slides.length)return;
+  activeSlide=Math.max(0,Math.min(activeSlide,slides.length-1));
+  slides.forEach((slide,i)=>slide.hidden=i!==activeSlide);
+  document.getElementById("slide-count").textContent=String(activeSlide+1).padStart(2,"0")+" / "+String(slides.length).padStart(2,"0");
+  document.getElementById("slide-prev").disabled=activeSlide===0;document.getElementById("slide-next").disabled=activeSlide===slides.length-1;
+}
+function toggleOverview(force){
+  const el=document.getElementById("slide-overview"),open=typeof force==="boolean"?force:!el.classList.contains("open");
+  el.classList.toggle("open",open);document.getElementById("slide-overview-toggle").setAttribute("aria-expanded",String(open));document.getElementById("slide-stage").style.display=open?"none":"block";
+}
+function setMode(mode){
+  activeMode=mode;document.documentElement.dataset.initialMode=mode;
+  document.querySelectorAll("[data-mode-button]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.modeButton===mode)));
+  document.querySelectorAll("[data-mode-view]").forEach(v=>v.hidden=v.dataset.modeView!==mode);
+  if(mode!=="slides")toggleOverview(false);if(mode==="slides")updateSlide();
+}
+document.querySelectorAll("[data-mode-button]").forEach(b=>b.addEventListener("click",()=>setMode(b.dataset.modeButton)));
+document.getElementById("slide-prev").addEventListener("click",()=>{activeSlide--;updateSlide()});
+document.getElementById("slide-next").addEventListener("click",()=>{activeSlide++;updateSlide()});
+document.getElementById("slide-overview-toggle").addEventListener("click",()=>toggleOverview());
+document.addEventListener("keydown",e=>{
+  if(document.getElementById("crap-dialog").open||activeMode!=="slides")return;
+  if(e.key==="ArrowLeft"){activeSlide--;updateSlide()}if(e.key==="ArrowRight"){activeSlide++;updateSlide()}if(e.key==="Escape")toggleOverview();
+});
+const crapGroups=[
+  {key:"C",name:"C — Contrast／對比",items:["標題、次標題、正文與註解具清楚層級。","主要焦點明確，文字與背景有足夠對比。","圖表標籤、註腳和來源容易閱讀。"]},
+  {key:"R",name:"R — Repetition／重複",items:["字型、色彩、間距與頁碼規則一致。","相同資料類別使用一致的符號與視覺編碼。","各模式的內容事實與資料保持同步。"]},
+  {key:"A",name:"A — Alignment／對齊",items:["文字、圖片、圖表與頁碼沿共同網格排列。","沒有無設計目的的偏移、遮擋或溢位。","16:9 投影片在不同視窗大小下仍完整顯示。"]},
+  {key:"P",name:"P — Proximity／親密性",items:["相關標題、內容、圖表與來源彼此靠近。","不同主題有清楚分組與足夠留白。","控制列不遮擋正文，匯出／列印內容完整。"]}
+];
+const checks=document.getElementById("crap-checks");
+checks.innerHTML=crapGroups.map(g=>'<section class="check-group"><h3>'+g.name+'</h3>'+g.items.map((item,i)=>'<label class="check-item"><input type="checkbox" data-crap-check="'+g.key+'-'+i+'"><span>'+item+'</span></label>').join("")+'<div class="check-status" data-crap-status="'+g.key+'">狀態：尚未檢查（0/'+g.items.length+'）</div></section>').join("");
+function updateCrapSummary(){
+  let total=0,checked=0;crapGroups.forEach(g=>{
+    const inputs=[...document.querySelectorAll('[data-crap-check^="'+g.key+'-"]')],count=inputs.filter(x=>x.checked).length;total+=inputs.length;checked+=count;
+    document.querySelector('[data-crap-status="'+g.key+'"]').textContent=count===inputs.length?"狀態：已記錄完成檢查（"+count+"/"+inputs.length+"）":"狀態："+(count?"部分檢查":"尚未檢查")+"（"+count+"/"+inputs.length+"）";
+  });
+  document.getElementById("crap-summary").textContent="完成記錄 "+checked+"/"+total+" 項；未完成 "+(total-checked)+" 項。勾選代表你已實際查看，不是自動驗證結果。";
+}
+checks.addEventListener("change",updateCrapSummary);
+document.getElementById("crap-open").addEventListener("click",()=>document.getElementById("crap-dialog").showModal());
+document.getElementById("crap-close").addEventListener("click",()=>document.getElementById("crap-dialog").close());
+document.getElementById("print-page").addEventListener("click",()=>window.print());
+document.getElementById("download-html").addEventListener("click",()=>{
+  document.documentElement.dataset.initialMode=activeMode;
+  const source="<!doctype html>\n"+document.documentElement.outerHTML,blob=new Blob([source],{type:"text/html;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");
+  a.href=url;a.download=(DOC.title||"document-studio").replace(/[\\/:*?"<>|]/g,"-").slice(0,80)+".html";
+  document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
+renderDocument();makeSlides();setMode(document.documentElement.dataset.initialMode||"swiss");updateCrapSummary();
+</script>
+</body>
+</html>
