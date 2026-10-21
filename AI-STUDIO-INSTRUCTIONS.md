@@ -20,14 +20,22 @@ https://github.com/op7418/guizang-ppt-skill
 
 本專案是衍生改作，並非原作者官方版本，也不表示已複製原專案的所有程式、模板或資產。
 
-若能存取原始 GitHub 專案，優先參考以下檔案：
+若能存取上游 Guizang PPT Skill，先確認並參考上游倉庫實際存在的檔案：
 - `SKILL.md`
 - `assets/template.html`
 - `assets/template-swiss.html`
+- `references/checklist.md`
+- `references/layouts.md`
+- `references/layouts-swiss.md`
+- `references/presenter-mode.md`
+
+本衍生專案自己的輔助檔案則以目前倉庫為準：
 - `references/crap-checklist.md`
 - `references/layout-patterns.md`
 - `references/deliverable-checklist.md`
 - `references/agent-install.md`
+- `assets/academic-deck-template.html`
+- `assets/academic-deck.css`
 
 若實際專案的檔案名稱或路徑不同，先確認現有檔案，不要假設檔案必定存在。若無法存取 GitHub 或參考檔案，直接依照本指令內含的規則工作，並如實說明沒有讀取的資源；不可聲稱已讀取或驗證不存在的檔案。
 
