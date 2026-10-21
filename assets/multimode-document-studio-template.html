@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-Hant" data-initial-mode="swiss">
+<html lang="zh-Hant" data-initial-mode="swiss" data-palette="ink-paper" data-slide-template="swiss">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="全能文稿排版助手多模式文稿工作介面範本">
@@ -14,6 +14,27 @@
 .dialog{border:1px solid #ddd;border-radius:16px;padding:0;width:min(760px,calc(100vw - 24px));max-height:85vh;overflow:auto;box-shadow:0 20px 80px #0004}.dialog::backdrop{background:#0007;backdrop-filter:blur(3px)}.dialog-head{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid #ddd}.dialog-head h2{margin:0}.dialog-head button{border:1px solid #ddd;border-radius:8px;background:white;padding:7px 10px}.dialog-body{padding:20px 22px}.dialog-body p{color:#555}.check-group{padding:16px 0;border-bottom:1px solid #eee}.check-group h3{margin:0 0 8px}.check-item{display:flex;gap:10px;align-items:flex-start;padding:7px 0}.check-item input{margin-top:5px}.check-status{font-size:12px;color:#666;margin-top:6px}.footnote{color:#777;font-size:12px;margin-top:18px}.footer{max-width:1440px;margin:20px auto;padding:0 clamp(12px,2vw,28px);font-size:12px;color:#777}
 @media(max-width:850px){.brand{width:100%;margin-bottom:2px}.toolbar{position:static}.swiss-grid{grid-template-columns:1fr}.workshop-steps{grid-template-columns:1fr}.slide{max-height:none;min-height:0}.workspace{margin-top:14px}}
 @media print{body{background:#fff}.toolbar,.slide-controls,.hint,.footer,.dialog,.overview{display:none!important}.workspace{padding:0;margin:0;max-width:none}.paper{border:0;border-radius:0;box-shadow:none}.mode-view[hidden]{display:none!important}.slide-stage{max-width:none}.slide{display:flex!important;width:100%;height:56.25vw;max-height:none;aspect-ratio:16/9;border-radius:0;page-break-after:always;break-after:page;print-color-adjust:exact;-webkit-print-color-adjust:exact}.slide:last-child{break-after:auto}.body-pad{padding:20mm}.meta-row{padding:10mm}.content-section{break-inside:avoid}.content-section li{break-inside:avoid}}
+
+/* v2.0: live slide template and palette system */
+:root{--deck-bg:#101114;--deck-fg:#fff;--deck-muted:#dedede;--deck-accent:#65b8ff;--deck-line:#444;--deck-panel:#24262a}
+html[data-palette="swiss-blue"]{--deck-bg:#10233f;--deck-fg:#fff;--deck-muted:#dce8f7;--deck-accent:#75c4ff;--deck-line:#49617d;--deck-panel:#19395e}
+html[data-palette="forest"]{--deck-bg:#132c25;--deck-fg:#f5f4e9;--deck-muted:#d1dfd5;--deck-accent:#a6e3b7;--deck-line:#48675b;--deck-panel:#204438}
+html[data-palette="burgundy"]{--deck-bg:#351820;--deck-fg:#fff7f0;--deck-muted:#f0d9d7;--deck-accent:#ffb4a6;--deck-line:#80505a;--deck-panel:#512833}
+html[data-palette="ocean-teal"]{--deck-bg:#082f36;--deck-fg:#f2ffff;--deck-muted:#c9e5e7;--deck-accent:#70e1d5;--deck-line:#3c7077;--deck-panel:#12464e}
+html[data-palette="warm-neutral"]{--deck-bg:#f3eee4;--deck-fg:#29251f;--deck-muted:#59534a;--deck-accent:#a44b2b;--deck-line:#c9bdac;--deck-panel:#e4d9c8}
+.slide{background:var(--deck-bg);color:var(--deck-fg)}.slide .kicker{color:var(--deck-accent)}.slide p,.slide li{color:var(--deck-muted)}.slide-foot{border-color:var(--deck-line);color:var(--deck-muted)}
+html[data-slide-template="editorial"] .slide{font-family:Georgia,"Noto Serif TC",serif;padding:clamp(30px,6vw,88px);border-radius:0;background:var(--deck-bg)}
+html[data-slide-template="editorial"] .slide h1,html[data-slide-template="editorial"] .slide h2{font-weight:500;letter-spacing:-.025em}
+html[data-slide-template="eink"] .slide{border-radius:0;box-shadow:none;border:1px solid var(--deck-line);padding:clamp(28px,5vw,76px)}
+html[data-slide-template="eink"] .slide .kicker{letter-spacing:.2em;text-transform:uppercase}
+html[data-slide-template="academic"] .slide{border-radius:3px;border-top:10px solid var(--deck-accent);padding:clamp(26px,4.5vw,66px)}
+html[data-slide-template="academic"] .slide h1,html[data-slide-template="academic"] .slide h2{max-width:18ch}
+html[data-slide-template="workshop"] .slide{border-radius:22px;background:linear-gradient(135deg,var(--deck-bg),var(--deck-panel));padding:clamp(26px,4.5vw,66px)}
+html[data-slide-template="workshop"] .slide h1,html[data-slide-template="workshop"] .slide h2{max-width:20ch}
+html[data-slide-template="swiss"] .slide{border-radius:8px;border-left:8px solid var(--deck-accent)}
+.style-pickers{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;padding:14px 0 18px;margin:0 auto;max-width:1120px}
+.picker-group{border:1px solid #ddd;background:#fff;border-radius:12px;padding:12px;min-width:0;flex:1 1 300px}.picker-title{font-size:12px;font-weight:800;letter-spacing:.08em;color:#555;margin:0 0 9px}.picker-options{display:flex;flex-wrap:wrap;gap:7px}.picker-options button{border:1px solid #d2d2d2;background:#fff;color:#222;border-radius:9px;padding:8px 10px;font-size:12px;font-weight:650}.picker-options button[aria-pressed="true"]{border:2px solid #111;background:#f2f2f2;box-shadow:0 0 0 2px #1677ff}.palette-swatch{display:inline-block;width:14px;height:14px;border-radius:50%;border:1px solid #999;vertical-align:-3px;margin-right:5px}.picker-status{font-size:12px;color:#666;margin:7px 0 0}
+@media(max-width:600px){.picker-group{flex-basis:100%}}
 </style>
 </head>
 <body>
@@ -31,6 +52,14 @@
     <button class="dark" type="button" id="download-html">↓ 下載單檔 HTML</button>
   </div>
 </header>
+<section class="style-pickers" aria-label="簡報樣板與配色選擇">
+ <div class="picker-group"><p class="picker-title">01 / 選擇投影片樣板</p><div class="picker-options" role="group" aria-label="投影片樣板">
+  <button type="button" data-template-choice="swiss" aria-pressed="true">▦ Swiss Grid</button><button type="button" data-template-choice="editorial" aria-pressed="false">▤ Editorial</button><button type="button" data-template-choice="eink" aria-pressed="false">▣ E-ink 極簡</button><button type="button" data-template-choice="academic" aria-pressed="false">▥ Academic 經典</button><button type="button" data-template-choice="workshop" aria-pressed="false">✳ Workshop 活力</button>
+ </div><p class="picker-status">樣板只改變版面風格，不改動內容與資料。</p></div>
+ <div class="picker-group"><p class="picker-title">02 / 選擇主題配色</p><div class="picker-options" role="group" aria-label="主題配色">
+  <button type="button" data-palette-choice="ink-paper" aria-pressed="true"><span class="palette-swatch" style="background:#101114"></span>Ink & Paper</button><button type="button" data-palette-choice="swiss-blue" aria-pressed="false"><span class="palette-swatch" style="background:#10233f"></span>Swiss Blue</button><button type="button" data-palette-choice="forest" aria-pressed="false"><span class="palette-swatch" style="background:#132c25"></span>Forest</button><button type="button" data-palette-choice="burgundy" aria-pressed="false"><span class="palette-swatch" style="background:#351820"></span>Burgundy</button><button type="button" data-palette-choice="ocean-teal" aria-pressed="false"><span class="palette-swatch" style="background:#082f36"></span>Ocean Teal</button><button type="button" data-palette-choice="warm-neutral" aria-pressed="false"><span class="palette-swatch" style="background:#f3eee4"></span>Warm Neutral</button>
+ </div><p class="picker-status" id="style-status" role="status" aria-live="polite">目前：Swiss Grid 樣板・Ink & Paper 配色</p></div>
+</section>
 <main class="workspace">
   <section id="view-swiss" class="mode-view" data-mode-view="swiss" aria-label="瑞士國際網格模式">
     <div class="paper"><div class="meta-row"><span>DOCUMENT / SWISS GRID</span><span>MODE B</span></div><div class="body-pad">
@@ -145,6 +174,14 @@ document.getElementById("download-html").addEventListener("click",()=>{
   a.href=url;a.download=(DOC.title||"document-studio").replace(/[\\/:*?"<>|]/g,"-").slice(0,80)+".html";
   document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
 });
+
+const templateNames={swiss:"Swiss Grid",editorial:"Editorial",eink:"E-ink 極簡",academic:"Academic 經典",workshop:"Workshop 活力"};
+const paletteNames={"ink-paper":"Ink & Paper","swiss-blue":"Swiss Blue",forest:"Forest",burgundy:"Burgundy","ocean-teal":"Ocean Teal","warm-neutral":"Warm Neutral"};
+function applyTemplate(name){if(!templateNames[name])return;document.documentElement.dataset.slideTemplate=name;document.querySelectorAll("[data-template-choice]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.templateChoice===name)));updateStyleStatus();}
+function applyPalette(name){if(!paletteNames[name])return;document.documentElement.dataset.palette=name;document.querySelectorAll("[data-palette-choice]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.paletteChoice===name)));updateStyleStatus();}
+function updateStyleStatus(){const el=document.getElementById("style-status");if(el)el.textContent="目前："+templateNames[document.documentElement.dataset.slideTemplate]+" 樣板・"+paletteNames[document.documentElement.dataset.palette]+" 配色；內容與資料維持不變。";}
+document.querySelectorAll("[data-template-choice]").forEach(b=>b.addEventListener("click",()=>applyTemplate(b.dataset.templateChoice)));
+document.querySelectorAll("[data-palette-choice]").forEach(b=>b.addEventListener("click",()=>applyPalette(b.dataset.paletteChoice)));
 renderDocument();makeSlides();setMode(document.documentElement.dataset.initialMode||"swiss");updateCrapSummary();
 </script>
 </body>
