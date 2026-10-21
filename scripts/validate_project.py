@@ -11,7 +11,7 @@ required = [
     "references/crap-checklist.md",
     "references/layout-patterns.md", "references/deliverable-checklist.md",
     "references/agent-install.md",
-    "references/guizang-feature-guide.md", "references/multimode-workspace.md",
+    "references/guizang-feature-guide.md", "references/multimode-workspace.md", "references/template-integration-playbook.md",
     "references/layouts.md", "references/layouts-swiss.md",
     "references/components.md", "references/themes.md", "references/themes-swiss.md",
     "references/presenter-mode.md", "references/checklist.md",
@@ -51,7 +51,7 @@ for label, content in (("AI Studio instructions", instructions), ("deliverable c
         if token not in content:
             print(f"{label} missing required feature: {token}")
             sys.exit(1)
-if "v2.0.0" not in instructions or "v2.0.0" not in html or "v2.0.0" not in (ROOT / "README.md").read_text(encoding="utf-8") or "version: 2.0.0" not in skill:
+if "v2.1.0" not in instructions or "v2.1.0" not in html or "v2.1.0" not in (ROOT / "README.md").read_text(encoding="utf-8") or "version: 2.1.0" not in skill:
     print("Version consistency check failed")
     sys.exit(1)
 for template in ("assets/template.html", "assets/template-swiss.html"):
