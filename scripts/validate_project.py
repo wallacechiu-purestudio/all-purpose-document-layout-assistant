@@ -11,6 +11,16 @@ required = [
     "references/crap-checklist.md",
     "references/layout-patterns.md", "references/deliverable-checklist.md",
     "references/agent-install.md",
+    "references/guizang-feature-guide.md",
+    "references/layouts.md", "references/layouts-swiss.md",
+    "references/components.md", "references/themes.md", "references/themes-swiss.md",
+    "references/presenter-mode.md", "references/checklist.md",
+    "references/swiss-layout-lock.md", "references/swiss-map-component.md",
+    "references/image-prompts.md", "references/screenshot-framing.md",
+    "assets/template.html", "assets/template-swiss.html", "assets/motion.min.js",
+    "scripts/validate-presenter-mode.mjs",
+    "scripts/check-presenter-runtime-sync.mjs",
+    "scripts/validate-swiss-deck.mjs",
 ]
 missing = [name for name in required if not (ROOT / name).is_file()]
 if missing:
@@ -40,8 +50,18 @@ for label, content in (("AI Studio instructions", instructions), ("deliverable c
         if token not in content:
             print(f"{label} missing required feature: {token}")
             sys.exit(1)
-if "v1.1.0" not in instructions or "v1.1.0" not in html or "v1.1.0" not in (ROOT / "README.md").read_text(encoding="utf-8"):
+if "v1.2.0" not in instructions or "v1.2.0" not in html or "v1.2.0" not in (ROOT / "README.md").read_text(encoding="utf-8") or "version: 1.2.0" not in skill:
     print("Version consistency check failed")
     sys.exit(1)
-print("PASS: required files, Skill front matter, CRAP terms, complete deliverables, version consistency, and local links.")
+for template in ("assets/template.html", "assets/template-swiss.html"):
+    content = (ROOT / template).read_text(encoding="utf-8")
+    if "<!DOCTYPE html>" not in content or "ppt-presenter" not in content or "ppt-overview" not in content:
+        print(f"Template feature check failed: {template}")
+        sys.exit(1)
+guide = (ROOT / "references/guizang-feature-guide.md").read_text(encoding="utf-8")
+for token in ("template.html", "template-swiss.html", "presenter-mode.md", "layouts-swiss.md"):
+    if token not in guide:
+        print(f"Guizang feature guide missing reference: {token}")
+        sys.exit(1)
+print("PASS: required files, Skill front matter, CRAP terms, complete deliverables, Guizang templates and references, version consistency, and local links.")
 print("NOTE: this script does not test browser rendering, clipboard permissions, or Pages deployment.")
