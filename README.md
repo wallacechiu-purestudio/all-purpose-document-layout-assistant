@@ -54,7 +54,7 @@ npx skills add https://github.com/wallacechiu-purestudio/all-purpose-document-la
 - [references/crap-checklist.md](references/crap-checklist.md)：CRAP 兩輪驗收清單
 - [references/layout-patterns.md](references/layout-patterns.md)：三套視覺系統與版型模式
 - [references/agent-install.md](references/agent-install.md)：本地安裝指南
-- [index.html](index.html)：一鍵複製與下載入口
+- [assets/academic-deck-template.html](assets/academic-deck-template.html) 與 [assets/academic-deck.css](assets/academic-deck.css)：網頁簡報模板與樣式\n- [index.html](index.html)：一鍵複製與下載入口
 - [NOTICE.md](NOTICE.md) 與 [LICENSE](LICENSE)：來源聲明與授權
 
 ## 啟用 GitHub Pages
