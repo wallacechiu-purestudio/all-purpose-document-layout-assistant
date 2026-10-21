@@ -51,7 +51,7 @@ for label, content in (("AI Studio instructions", instructions), ("deliverable c
         if token not in content:
             print(f"{label} missing required feature: {token}")
             sys.exit(1)
-if "v1.3.0" not in instructions or "v1.3.0" not in html or "v1.3.0" not in (ROOT / "README.md").read_text(encoding="utf-8") or "version: 1.3.0" not in skill:
+if "v2.0.0" not in instructions or "v2.0.0" not in html or "v2.0.0" not in (ROOT / "README.md").read_text(encoding="utf-8") or "version: 2.0.0" not in skill:
     print("Version consistency check failed")
     sys.exit(1)
 for template in ("assets/template.html", "assets/template-swiss.html"):
@@ -66,7 +66,7 @@ for token in ("16:9 學術簡報模式", "CRAP 檢核報告", "列印／PDF", "�
     if token not in mode_spec or token not in instructions or token not in mode_template:
         print(f"Multimode workspace feature missing: {token}")
         sys.exit(1)
-for token in ("data-mode-button", "data-mode-view", "window.print()", "Blob(", "aspect-ratio:16/9"):
+for token in ("data-mode-button", "data-mode-view", "window.print()", "Blob(", "aspect-ratio:16/9", "data-template-choice", "data-palette-choice", "function applyTemplate", "function applyPalette", "Swiss Blue", "Ocean Teal", "Workshop 活力"):
     if token not in mode_template:
         print(f"Multimode HTML template missing behaviour: {token}")
         sys.exit(1)
