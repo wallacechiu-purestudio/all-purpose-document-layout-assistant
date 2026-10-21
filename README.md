@@ -54,6 +54,7 @@ npx skills add https://github.com/wallacechiu-purestudio/all-purpose-document-la
 - [AI-STUDIO-INSTRUCTIONS.md](AI-STUDIO-INSTRUCTIONS.md)：Google AI Studio 專用指令
 - [references/crap-checklist.md](references/crap-checklist.md)：CRAP 兩輪驗收清單
 - [references/layout-patterns.md](references/layout-patterns.md)：三套視覺系統與版型模式
+- [references/deliverable-checklist.md](references/deliverable-checklist.md)：履歷、研究報告與附完整原始碼簡報的交付檢核
 - [references/agent-install.md](references/agent-install.md)：本地安裝指南
 - [assets/academic-deck-template.html](assets/academic-deck-template.html) 與 [assets/academic-deck.css](assets/academic-deck.css)：網頁簡報模板與樣式
 - [index.html](index.html)：一鍵複製與下載入口
