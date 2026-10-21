@@ -1,4 +1,4 @@
-# Guizang PPT 核心功能使用指南
+# Guizang PPT 核心功能與多模式介面整合指南
 
 本專案已納入上游 Guizang PPT Skill 的可重用模板、版型與演講控制資源，並以學術研究、大學教學、繁體中文與可追溯資料的工作流程加以整合。
 
@@ -68,7 +68,11 @@
 
 需要 Node.js 的驗證腳本請先安裝相容版本。Swiss 版型驗證器會使用 Playwright 開啟 Chromium 量測頁面；若環境尚未安裝 Playwright，請在專案環境安裝 `playwright` 並下載相容的 Chromium 瀏覽器後再執行。驗證腳本通過不代表已完成所有真實簡報情境的驗收；仍應在目標瀏覽器開啟簡報，測試鍵盤、總覽、演講者視圖、備註保存、觀眾同步、圖片載入、列印和不同螢幕尺寸。
 
-## 7. 快速選擇
+## 8. 多模式文稿工作介面（本衍生版新增）
+
+多模式工具列不是 Guizang 上游原始模板的既有首頁工具列，而是本衍生版新增的整合功能。需求包含互動式文稿工作台時，請讀取 references/multimode-workspace.md，並以 assets/multimode-document-studio-template.html 作可執行參考。介面必須可切換瑞士國際網格、雜誌電子墨水、教學與工作坊，以及真正的 16:9 逐頁學術簡報；另須提供可操作的 CRAP 檢核面板、列印／PDF 與下載單檔 HTML。AI Studio 無法自動讀取 GitHub 倉庫，所以 AI-STUDIO-INSTRUCTIONS.md 已嵌入相同核心規格。範例程式碼與瀏覽器測試狀態須分開說明。
+
+## 9. 快速選擇
 
 | 任務 | 建議模板 |
 |---|---|
