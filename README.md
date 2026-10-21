@@ -1,8 +1,8 @@
 # 全能文稿排版助手｜Academic & Teaching Edition
 
-> 繁體中文 AI Agent Skill：將學術研究與大學教學內容整理成清楚、可信、可檢查、可維護的簡報、講義、研究報告與 HTML 文稿。
+> 繁體中文 AI Agent Skill：將學術研究與大學教學內容整理成清楚、可信、可檢查、可維護的履歷／CV、研究報告、簡報、講義與 HTML 文稿，並支援附完整原始碼的簡報專案。
 
-**v0.3.0 · AGPL-3.0-only · Codex / Claude Code / Google AI Studio**
+**v1.1.0 · AGPL-3.0-only · Codex / Claude Code / Google AI Studio**
 
 ## 30 秒開始
 
@@ -44,8 +44,9 @@ npx skills add https://github.com/wallacechiu-purestudio/all-purpose-document-la
 2. 規劃資訊架構與每頁／每節的主要訊息。
 3. 依內容選擇 A 編輯雜誌式、B 瑞士網格式或 C 教學工作坊式視覺系統。
 4. 依 CRAP 四原則（Contrast、Repetition、Alignment、Proximity）進行兩輪檢核。
-5. 保留研究證據、原始數據、引文與可追溯來源，不捏造資料。
-6. 交付成品，說明檢核結果、實際測試範圍與未驗證事項。
+5. 依任務交付完整履歷／CV、研究報告，或含完整原始碼、README、依賴／授權資訊及驗證狀態的簡報專案。
+6. 保留研究證據、原始數據、引文與可追溯來源，不捏造資料。
+7. 交付成品，說明檢核結果、實際測試範圍與未驗證事項。
 
 ## 專案檔案
 
