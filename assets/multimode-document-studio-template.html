@@ -2,7 +2,7 @@
 <html lang="zh-Hant" data-initial-mode="swiss" data-palette="ink-paper" data-slide-template="swiss">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="全能文稿排版助手多模式文稿工作介面範本">
+<meta name="description" content="全能文稿排版助手多模式文稿工作介面範本；完整網頁 PPT 請依整合手冊使用上游模板">
 <title>多模式文稿工作介面｜全能文稿排版助手</title>
 <style>
 :root{color-scheme:light;--paper:#f4f4f2;--ink:#151515;--muted:#626262;--line:#d8d8d5;--blue:#1877f2;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif}
@@ -35,6 +35,7 @@ html[data-slide-template="swiss"] .slide{border-radius:8px;border-left:8px solid
 .style-pickers{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;padding:14px 0 18px;margin:0 auto;max-width:1120px}
 .picker-group{border:1px solid #ddd;background:#fff;border-radius:12px;padding:12px;min-width:0;flex:1 1 300px}.picker-title{font-size:12px;font-weight:800;letter-spacing:.08em;color:#555;margin:0 0 9px}.picker-options{display:flex;flex-wrap:wrap;gap:7px}.picker-options button{border:1px solid #d2d2d2;background:#fff;color:#222;border-radius:9px;padding:8px 10px;font-size:12px;font-weight:650}.picker-options button[aria-pressed="true"]{border:2px solid #111;background:#f2f2f2;box-shadow:0 0 0 2px #1677ff}.palette-swatch{display:inline-block;width:14px;height:14px;border-radius:50%;border:1px solid #999;vertical-align:-3px;margin-right:5px}.picker-status{font-size:12px;color:#666;margin:7px 0 0}
 @media(max-width:600px){.picker-group{flex-basis:100%}}
+.integration-notice{max-width:1120px;margin:12px auto 0;padding:12px 14px;border:1px solid #d9c99d;border-left:4px solid #a77a18;border-radius:8px;background:#fff9e8;color:#463a1f;font-size:13px}.integration-notice a{display:inline-block;margin-left:8px;font-weight:750;color:#62450c}.integration-notice code{font-size:12px}@media(max-width:700px){.integration-notice{margin:10px 12px}.integration-notice a{margin-left:0;display:block}}
 </style>
 </head>
 <body>
@@ -52,6 +53,7 @@ html[data-slide-template="swiss"] .slide{border-radius:8px;border-left:8px solid
     <button class="dark" type="button" id="download-html">↓ 下載單檔 HTML</button>
   </div>
 </header>
+<aside class="integration-notice" role="note"><strong>模板使用說明｜</strong>本頁是多模式介面與樣板切換的功能示範，不等於 Guizang 上游完整簡報引擎。正式製作高完成度網頁 PPT 時，請以 <code>assets/template.html</code> 或 <code>assets/template-swiss.html</code> 為底，並使用相對應的版型資料庫。<a href="../references/template-integration-playbook.md">開啟模板效能整合手冊 ↗</a></aside>
 <section class="style-pickers" aria-label="簡報樣板與配色選擇">
  <div class="picker-group"><p class="picker-title">01 / 選擇投影片樣板</p><div class="picker-options" role="group" aria-label="投影片樣板">
   <button type="button" data-template-choice="swiss" aria-pressed="true">▦ Swiss Grid</button><button type="button" data-template-choice="editorial" aria-pressed="false">▤ Editorial</button><button type="button" data-template-choice="eink" aria-pressed="false">▣ E-ink 極簡</button><button type="button" data-template-choice="academic" aria-pressed="false">▥ Academic 經典</button><button type="button" data-template-choice="workshop" aria-pressed="false">✳ Workshop 活力</button>
