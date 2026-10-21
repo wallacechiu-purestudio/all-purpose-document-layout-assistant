@@ -57,7 +57,7 @@
 - `references/screenshot-framing.md`：保真截圖、留白與比例調整規則。
 - `references/swiss-map-component.md`：Swiss S08 版型的地圖元件擴充。只有內容確實需要地理位置或路線時才使用。
 
-截圖保真優先：使用者要求保留 UI、程式碼、文字或數據時，不得用生成圖片取代原圖內容。
+截圖保真優先：使用者要求保留 UI、程式碼、文字或數據時，不得用生成圖片取代原圖內容。注意：上游的 9 張 `assets/screenshot-backgrounds/` WebP 背景圖未隨本次整合納入；若沒有這些本地檔案，請使用 CSS 漸層／純色 fallback，或從上游倉庫取得並保留授權資訊。
 
 ## 6. 產出前的驗證
 
