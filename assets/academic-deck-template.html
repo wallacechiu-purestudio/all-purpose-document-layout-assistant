@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>學術簡報模板｜請替換標題</title>
+<link rel="stylesheet" href="academic-deck.css">
+</head>
+<body>
+<main class="deck" aria-label="簡報內容">
+<section class="slide cover" id="slide-1" data-slide-id="slide-1">
+<p class="eyebrow">ACADEMIC COMMUNICATION / 01</p>
+<h1>請替換為<br><em>簡報主標題</em></h1>
+<p class="subtitle">副標題、研究／課程名稱或演講場合</p>
+<p class="source-note">作者／單位 · 日期（請依實際資料修改）</p>
+</section>
+<section class="slide" id="slide-2" data-slide-id="slide-2">
+<p class="eyebrow">02 / CONTEXT</p>
+<h2 class="slide-title">用結論式標題說明本頁重點</h2>
+<div class="grid-2">
+<div><h3>核心概念</h3><p>在此放入一個主要訊息，並以簡潔文字說明。</p></div>
+<div class="takeaway"><strong>主要訊息</strong><p>讀者看完本頁應理解或記住什麼？</p></div>
+</div>
+<p class="source-note">來源：請填入可追溯的來源；若為示意內容請明確標示。</p>
+</section>
+<section class="slide" id="slide-3" data-slide-id="slide-3">
+<p class="eyebrow">03 / EVIDENCE</p>
+<h2 class="slide-title">以可追溯的證據支持主張</h2>
+<div class="metric"><strong>XX%</strong><span>請替換成已查證數值與單位</span></div>
+<p>補充資料的樣本範圍、時間、必要註解及限制。不得以佔位數值冒充研究結果。</p>
+<p class="source-note">資料來源：作者／機構、年份、標題或 URL。</p>
+</section>
+<section class="slide" id="slide-4" data-slide-id="slide-4">
+<p class="eyebrow">04 / SYNTHESIS</p>
+<h2 class="slide-title">結論應回應研究問題或學習目標</h2>
+<ul><li>主要發現或學習重點一</li><li>主要發現或學習重點二</li><li>限制、下一步或行動建議</li></ul>
+<div class="takeaway"><strong>Takeaway</strong><p>用一句話收束本次簡報的核心訊息。</p></div>
+</section>
+</main>
+<nav class="controls" aria-label="簡報控制">
+<button id="prev" type="button" aria-label="上一頁">← 上一頁</button>
+<span id="counter" aria-live="polite">1 / 4</span>
+<button id="next" type="button" aria-label="下一頁">下一頁 →</button>
+<span class="hint">方向鍵翻頁 · Esc 總覽</span>
+</nav>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let current=0;const counter=document.getElementById('counter');
+function show(i){current=Math.max(0,Math.min(slides.length-1,i));slides.forEach((s,n)=>s.classList.toggle('active',n===current));counter.textContent=(current+1)+' / '+slides.length;document.getElementById('prev').disabled=current===0;document.getElementById('next').disabled=current===slides.length-1}
+document.getElementById('prev').addEventListener('click',()=>show(current-1));document.getElementById('next').addEventListener('click',()=>show(current+1));
+document.addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(current+1)}else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(current-1)}else if(e.key==='Escape'){document.body.classList.toggle('overview')}});
+show(0);
+</script>
+</body>
+</html>
